@@ -12,8 +12,10 @@ include_once '../vendor/autoload.php';
 $config     = new JsonConfig( __DIR__ . '/config.json' );
 $config->merge( new IniConfig( __DIR__ . '/config.ini' ) );
 
-$db         = new Connection( $config->get( 'db' ) );
+$connectionConfig           = $config['db']['connection'];
+$connectionConfig['schema'] = $config['db']['schema'];
 
+$db         = new Connection( $connectionConfig );
 $stmt       = $db->query( 'select * from robots' );
 
-var_dump( $stmt->loadIntoObject(  ) );
+var_dump( $stmt->loadIntoObject( new stdClass() ) );

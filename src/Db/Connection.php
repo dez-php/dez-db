@@ -33,13 +33,11 @@
 
             $this->setConfig( $config );
 
-            $connectionConfig   = $config->get( 'connection' );
-
             try {
                 @ parent::__construct (
-                    $connectionConfig->get( 'dsn' ),
-                    $connectionConfig->get( 'user' ),
-                    $connectionConfig->get( 'password' ),
+                    $config->get( 'dsn' ),
+                    $config->get( 'user' ),
+                    $config->get( 'password' ),
                     [
                         parent::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
                     ]
