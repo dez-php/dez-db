@@ -1,0 +1,17 @@
+{
+  "app": {
+    "db": {
+      "host": "localhost",
+      "b": "333qqq"
+    },
+    "components": {
+      "auth": {
+        "type": "simple merge from json",
+        "descr": "test merge"
+      }
+    }
+  },
+  "salt": "salt json",
+  "app_name": "Name from json",
+  "is_dev": "asd"
+}

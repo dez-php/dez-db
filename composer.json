@@ -1,0 +1,22 @@
+{
+  "name": "dez-php/dez-db",
+  "description": "Db Connection Component",
+  "keywords": ["php db","db","php db connection", "dez-php db"],
+  "authors": [
+    {
+      "name": "Ivan Gontarenko",
+      "email": "vania.gontarenko@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": ">=5.5",
+    "dez-php/dez-configuration": ">=1.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dez\\Db\\": "src/Db"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "dez-php/dez-config",
+  "description": "DezPHP - Config",
+  "keywords": ["php config","config", "dez-php config", "dez-config" ],
+  "authors": [
+    {
+      "name": "Ivan Gontarenko",
+      "email": "vania.gontarenko@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": ">=5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dez\\Config\\": "src/Config"
+    }
+  }
+}
