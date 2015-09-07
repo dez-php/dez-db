@@ -50,7 +50,9 @@
             $this->setAttribute( static::ATTR_CURSOR,             static::CURSOR_SCROLL );
             $this->setAttribute( static::ATTR_STATEMENT_CLASS,    [ __NAMESPACE__ .'\Stmt', [ $this ] ] );
 
-            $this->initSchema();
+            if( $config->get( 'use_schema' ) == 1 ) {
+                $this->initSchema();
+            }
         }
 
         /**
