@@ -39,16 +39,16 @@
                     $config->get( 'user' ),
                     $config->get( 'password' ),
                     [
-                        parent::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+                        Connection::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
                     ]
                 );
             } catch ( \Exception $e ) {
                 throw new Exception( $e->getMessage() );
             }
 
-            $this->setAttribute( static::ATTR_ERRMODE,            static::ERRMODE_EXCEPTION );
-            $this->setAttribute( static::ATTR_CURSOR,             static::CURSOR_SCROLL );
-            $this->setAttribute( static::ATTR_STATEMENT_CLASS,    [ __NAMESPACE__ .'\Stmt', [ $this ] ] );
+            $this->setAttribute( Connection::ATTR_ERRMODE,            Connection::ERRMODE_EXCEPTION );
+            $this->setAttribute( Connection::ATTR_CURSOR,             Connection::CURSOR_SCROLL );
+            $this->setAttribute( Connection::ATTR_STATEMENT_CLASS,    [ __NAMESPACE__ .'\Stmt', [ $this ] ] );
 
             $this->initSchema();
         }
@@ -96,9 +96,11 @@
          */
         public function execute( $query = null ) {
             try {
-                $this->affectedRows = parent::exec( $query );
+                if( ( $this->affectedRows = parent::exec( $query ) ) === false ) {
+                    throw new Exception( "{$this->errorCode()}:{$this->errorInfo()}" );
+                }
             } catch ( \Exception $e ) {
-                throw new Exception( 'Error: ('. $e->getMessage() .') Query('. $query .')' );
+                throw new Exception( "DezConnection: {$e->getMessage()} in query {$query}" );
             }
             return $this;
         }
@@ -110,10 +112,13 @@
          */
         public function query( $query = null ) {
             try {
-                return parent::query( $query );
+                if( ( $result = parent::query( $query ) ) === false ) {
+                    throw new Exception( "{$this->errorCode()}:{$this->errorInfo()}" );
+                }
             } catch ( \Exception $e ) {
-                throw new Exception( 'Error: ('. $e->getMessage() .') Query('. $query .')' );
+                throw new Exception( "DezConnection: {$e->getMessage()} in query {$query}" );
             }
+            return $result;
         }
 
         /**
