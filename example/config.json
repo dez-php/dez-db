@@ -5,8 +5,12 @@
       "user":"root",
       "password":"root"
     },
-    "orm":{
-
+    "setting": {
+      "reconnect": 1,
+      "reconnect_trying": 5,
+      "schema":{
+        "file":"./schema.xml"
+      }
     }
   }
 }

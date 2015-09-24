@@ -164,7 +164,7 @@
          * @throws Exception
          */
         private function initSchema() {
-            $schemaFile     = realpath( $this->getConfig()->get( 'schema' )->get( 'file' ) );
+            $schemaFile     = realpath( $this->getConfig()['setting']['schema']['file'] );
             try {
                 static::$schema   = new Schema( $schemaFile );
             } catch( Exception $e ) {
