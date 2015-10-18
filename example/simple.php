@@ -19,6 +19,6 @@ $connectionConfig->merge( new FromArray( [
 ] ) );
 
 $db         = new Connection( $connectionConfig );
-$stmt       = $db->query( 'select * from robots' );
+$stmt       = $db->query( 'select * from posts' );
 
 var_dump( $stmt->loadIntoObject( new stdClass() ) );

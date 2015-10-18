@@ -1,7 +1,7 @@
 {
   "db":{
     "connection":{
-      "dsn":"mysql:host=localhost;dbname=test",
+      "dsn":"mysql:host=localhost;dbname=dev-id",
       "user":"root",
       "password":"root"
     },

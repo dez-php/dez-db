@@ -21,11 +21,6 @@
         static protected $config    = null;
 
         /**
-         * @var null
-         */
-        static protected $schema    = null;
-
-        /**
          * @param Config $config
          * @throws Exception
          */
@@ -66,13 +61,6 @@
          */
         public function getConfig() {
             return static::$config;
-        }
-
-        /**
-         * @return Schema
-         */
-        public function getSchema() {
-            return static::$schema;
         }
 
         /**
