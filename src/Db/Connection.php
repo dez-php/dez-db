@@ -50,7 +50,6 @@
             $this->setAttribute( Connection::ATTR_CURSOR,             Connection::CURSOR_SCROLL );
             $this->setAttribute( Connection::ATTR_STATEMENT_CLASS,    [ __NAMESPACE__ .'\Stmt', [ $this ] ] );
 
-            $this->initSchema();
         }
 
         /**
@@ -158,18 +157,6 @@
         public function rollback() {
             parent::rollBack();
             return $this;
-        }
-
-        /**
-         * @throws Exception
-         */
-        private function initSchema() {
-            $schemaFile     = realpath( $this->getConfig()['setting']['schema']['file'] );
-            try {
-                static::$schema   = new Schema( $schemaFile );
-            } catch( Exception $e ) {
-                throw $e;
-            }
         }
 
     }
